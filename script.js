@@ -16,7 +16,7 @@ var four = $("#16");
 var five = $("#17");
 
 var userInput;
-var hourSpan;
+var hours;
 
 var date = setInterval(function() {
     var momentNow = moment();
@@ -64,8 +64,8 @@ function storage() {
 $(document).ready(function(){
 $(".saveBtn").on("click", function() {
     userInput = $(this).siblings(".form-control").val().trim();
-    hourSpan = $(this).siblings(".input-group-prepend").text().trim();
-    localStorage.setItem(hourSpan, JSON.stringify(userInput));
+    hours = $(this).siblings(".input-group-prepend").text().trim();
+    localStorage.setItem(hours, JSON.stringify(userInput));
 })
 
 storage();
