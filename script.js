@@ -5,15 +5,18 @@
 var currentDate = moment().format('ddd') + " " + moment().format("Do MMM YY")
 var hour = moment().hour();
 
-var nine = $("#9am");
-var ten = $("#10am");
-var eleven = $("#11am");
-var twelve = $("#12pm");
-var one = $("#1pm");
-var two = $("#2pm");
-var three = $("#3pm");
-var four = $("#4pm");
-var five = $("#5pm");
+var nine = $("#9");
+var ten = $("#10");
+var eleven = $("#11");
+var twelve = $("#12");
+var one = $("#13");
+var two = $("#14");
+var three = $("#15");
+var four = $("#16");
+var five = $("#17");
+
+var userInput;
+var hourSpan;
 
 console.log("the time is:", hour)
 console.log(currentDate)
@@ -40,41 +43,34 @@ function color() {
 }
 
 function storage() {
-    console.log("Current Hour " + hour);
-    var init9 = JSON.parse(localStorage.getItem("09:00am"));
-    nine.val(init9);
-  
-    var init10 = JSON.parse(localStorage.getItem("10:00am"))
-    ten.val(init10);
-    
-    var init11 = JSON.parse(localStorage.getItem("11:00am"))
-    eleven.val(init11);
-    
-    var init12 = JSON.parse(localStorage.getItem("12:00pm"))
-    twelve.val(init12);
-    
-    var init1 = JSON.parse(localStorage.getItem("01:00pm"))
-    one.val(init1);
-    
-    var init2 = JSON.parse(localStorage.getItem("02:00pm"))
-    two.val(init2);
-    
-    var init3 = JSON.parse(localStorage.getItem("03:00pm"))
-    three.val(init3);
-   
-    var init4 = JSON.parse(localStorage.getItem("04:00pm"))
-    four.val(init4);
-    
-    var init5 = JSON.parse(localStorage.getItem("05:00pm"))
-    five.val(init5);
+    var store9 = JSON.parse(localStorage.getItem("9:00am"))
+    var store10 = JSON.parse(localStorage.getItem("10:00am"))
+    var store11 = JSON.parse(localStorage.getItem("11:00am"))
+    var store12 = JSON.parse(localStorage.getItem("12:00pm"))
+    var store1 = JSON.parse(localStorage.getItem("1:00pm"))
+    var store2 = JSON.parse(localStorage.getItem("2:00pm"))
+    var store3 = JSON.parse(localStorage.getItem("3:00pm"))
+    var store4 = JSON.parse(localStorage.getItem("4:00pm"))
+    var store5 = JSON.parse(localStorage.getItem("5:00pm"))
+
+    nine.val(store9);
+    ten.val(store10);
+    eleven.val(store11);
+    twelve.val(store12);
+    one.val(store1);
+    two.val(store2);
+    three.val(store3);
+    four.val(store4);
+    five.val(store5);
 } 
 
+$(document).ready(function(){
 $(".saveBtn").on("click", function() {
-    userInput = $(this).siblings(".form-control").val();
-    hourSpan = $(this).siblings(".input-group-prepend").text();
+    userInput = $(this).siblings(".form-control").val().trim();
+    hourSpan = $(this).siblings(".input-group-prepend").text().trim();
     localStorage.setItem(hourSpan, JSON.stringify(userInput));
-
 })
 
 storage();
 color();
+})
