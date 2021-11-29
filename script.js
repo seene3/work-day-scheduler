@@ -18,9 +18,6 @@ var five = $("#17");
 var userInput;
 var hourSpan;
 
-console.log("the time is:", hour)
-console.log(currentDate)
-
 var date = setInterval(function() {
     var momentNow = moment();
     $('#currentDay').html(momentNow.format('MMMM Do, YYYY'))
